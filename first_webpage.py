@@ -1,6 +1,6 @@
 """Steamlit to create a dummy webpage"""
 import streamlit as st
-
+import webstreamer
 
 hello_text = st.write("Hello, This is the first webpage I have created!!!")
 #print("Hello Abhay")
@@ -16,11 +16,11 @@ a + a r^1 + a r^2 + a r^3 ''')
 
 st.header("")
 st.header("Buddha:")
-st.video("https://github.com/armeshram/-machine_learning/blob/main/Buddha%20Purnima%20_%20Gautam%20Buddha%20_%20Gautam%20Buddha%20Status%20_%20Buddha%20pournima%20_%20Historic%20India%20_%20%23Shorts.mp4")
+st.video("https://github.com/armeshram/-machine_learning/blob/ef9d9b002e05947c148b60eee77b4aa0424e7d73/resource/Buddha%20Purnima%20_%20Gautam%20Buddha%20_%20Gautam%20Buddha%20Status%20_%20Buddha%20pournima%20_%20Historic%20India%20_%20%23Shorts.mp4")
 
 st.header("")
 st.header("Abhay:")
-st.image("https://github.com/armeshram/-machine_learning/blob/main/Abhay_60Kb.jpeg")
+st.image("https://github.com/armeshram/-machine_learning/blob/ef9d9b002e05947c148b60eee77b4aa0424e7d73/resource/Abhay_60Kb.jpeg")
 
 
 #st.header("Enjoying")
