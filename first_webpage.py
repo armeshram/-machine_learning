@@ -16,13 +16,11 @@ a + a r^1 + a r^2 + a r^3 ''')
 
 st.header("")
 st.header("Buddha:")
-st.video("/workspaces/-machine_learning/resource_folder/\
-Buddha Purnima _ Gautam Buddha _ Gautam Buddha Status _ \
-Buddha pournima _ Historic India _ #Shorts.mp4")
+st.video("https://github.com/armeshram/-machine_learning/blob/main/Buddha%20Purnima%20_%20Gautam%20Buddha%20_%20Gautam%20Buddha%20Status%20_%20Buddha%20pournima%20_%20Historic%20India%20_%20%23Shorts.mp4")
 
 st.header("")
 st.header("Abhay:")
-st.image("/workspaces/-machine_learning/resource_folder/Abhay_60Kb.jpeg")
+st.image("https://github.com/armeshram/-machine_learning/blob/main/Abhay_60Kb.jpeg")
 
 
 #st.header("Enjoying")
