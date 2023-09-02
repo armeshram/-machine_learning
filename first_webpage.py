@@ -1,6 +1,6 @@
 """Steamlit to create a dummy webpage"""
 import streamlit as st
-import webstreamer
+
 
 hello_text = st.write("Hello, This is the first webpage I have created!!!")
 #print("Hello Abhay")
