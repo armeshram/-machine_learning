@@ -1,0 +1,82 @@
+import os
+from io import StringIO
+
+#"""Steamlit to create a dummy webpage"""
+import streamlit as st
+import openai
+#import numpy as np
+
+PROMPT = ''
+INPUT_AREA = "Invalid Input"
+SUBMITTED = False
+
+
+st.header("This is Code Explainer Tool")
+
+select_input_mode = st.radio("Select Input Mode",["Input Text Code","Upload Text File"])
+
+if select_input_mode == "Input Text Code":
+    INPUT_AREA = st.text_area(label="Input your Code here",height=200)
+    TEMP_VAL =st.slider(label="Temperature",min_value=0.0,max_value=1.0)        
+else:
+    uploaded_file = st.file_uploader("Upload Code File",accept_multiple_files=False)
+    if uploaded_file is None:
+        st.warning("Please Upload File")
+        st.stop()
+    
+    if ((uploaded_file.type == '.txt') or
+       (uploaded_file.type == 'text/plain') or
+       (uploaded_file.type == 'text/x-python-script')):
+        INPUT_AREA = uploaded_file.getvalue().decode("utf-8")
+        TEMP_VAL =st.slider(label="Temperature",min_value=0.0,max_value=1.0)
+#       st.write(INPUT_AREA)
+#        TEMP_VAL = 0.5
+    else:
+#        st.form_submit_button("")
+        st.write(f"Submiited file type is : {uploaded_file.type}")
+        st.error("Please upload only text files")
+        st.stop()
+        INPUT_AREA = ''
+        PROMPT = ''
+
+agreement = st.checkbox("Confirm Sharing of Code")
+if agreement is True:
+    SUBMITTED = st.button(label="Explain")
+#    st.write(f"Submit Button Value : {SUBMITTED}")
+    
+    if INPUT_AREA == '':
+        st.error("Empty Code can not be  Explained")
+        st.stop()
+
+
+#Add your Open AI Key here
+openai.api_key = "XXXXXXXXXXXXXXXXX"
+
+MODEL_ENGINE = "gpt-3.5-turbo"
+
+#st.write(f"Submit Value before checking: {SUBMITTED}")
+
+if agreement is True:
+
+    if SUBMITTED:
+#        st.write("Temperature", TEMP_VAL, "Explanation", agreement)
+        PROMPT = f"Please Provide correct Explaination for below Code: \n {INPUT_AREA}"
+
+    if not PROMPT == '':
+#        st.subheader("In above Text box Enter Code to Explain")
+#    else:
+        st.subheader("Below code submitted for explanation :")
+        st.code(INPUT_AREA)
+
+        messages = [{"role":"user","content":PROMPT}]
+        completion = openai.ChatCompletion.create(
+            model = MODEL_ENGINE,
+            messages = messages,
+            temperature = TEMP_VAL,
+        )
+    
+        response = completion.choices[0].message["content"]
+        st.header("Enter Code Explanation is as follows: ",)
+        st.write(response)
+
+
